@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:java="http://www.mulesoft.org/schema/mule/java" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/java/current/mule-java.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="92b454b8-937a-4ad9-b141-b7d0b5931f85" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="ba54e107-57e6-4980-9ece-8d1b266d777c" >
+		<http:listener-connection host="0.0.0.0" port="8084" />
+	</http:listener-config>
+	<flow name="helloworldFlow" doc:id="8a1d3884-c5e3-470e-9aed-a52c6380a0c0" >
+		<http:listener doc:name="Listener" doc:id="c2a37b6d-ed2a-4c86-8e3f-1eb70f3f5136" config-ref="HTTP_Listener_config" path="/hello"/>
+		<ee:transform doc:name="Transform Message" doc:id="f1f021ef-d6bd-4893-8908-682d68fc63c5" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+"Hello" ++ "World"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="fac9d5d0-2f74-4c0d-91cb-576108d3210d" message="Final Payload: #[payload] "/>
+	</flow>
+	<flow name="flow2" doc:id="ffb8272f-7afd-4944-a0fc-069b5c610c1f" >
+		<http:listener doc:name="Listener" doc:id="6069086f-0a84-42c6-9fb9-cec543312b79" config-ref="HTTP_Listener_config" path="/invokeFlow"/>
+		<set-variable value="Sachin" doc:name="Set Variable" doc:id="f3c2f606-ef29-432e-a855-6b6170c45fe2" variableName="string1" />
+		<ee:transform doc:name="Transform Message" doc:id="b2446198-75ae-456e-ba4c-248edc05bdfc" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+	a:lookup("Flow3",vars.string1)
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="Flow1" doc:id="41cac027-4379-4572-8904-bdd52a43879b" >
+		<http:listener doc:name="Listener" doc:id="50243d4c-aa3b-413e-97bb-2d6042e6c956" config-ref="HTTP_Listener_config1" path="/invokeFlow"/>
+		<flow-ref doc:name="InvokeFlow" doc:id="a58aa63e-1336-4058-be9d-dc3fa7744fde" name="Flow3"/>
+	</flow>
+	<flow name="Flow3" doc:id="6bd211cd-4809-4e3c-8116-16f798e60510" >
+		<set-variable value="Sachin" doc:name="Set Variable" doc:id="291f4d0a-d08c-4494-a160-864d409f3fe7" variableName="string1" />
+		<ee:transform doc:name="Transform Message" doc:id="9345e387-cbfb-4bc7-94fe-ae591f7b60b7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	a: vars.string1 ++ "Tendulkar"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="f3c74f55-9766-4d2f-9824-4a8a031ce3e8" message="Final Value is #[payload]"/>
+	</flow>
+	<flow name="Copy_of_invokecustomjavaFlow" doc:id="a8cfa0b1-f109-42de-97be-b7e2b0894caf" initialState="stopped" >
+		<http:listener doc:name="Copy_of_Listener" doc:id="ac299a30-162e-4f82-817a-93f64a681d03" config-ref="HTTP_Listener_config" path="/getsubstring" />
+		<java:invoke-static method="getSubString(String)" doc:id="0aa196cf-a4cd-4c15-9d3e-ce386fd8b989" class="company.TestSubstring" doc:name="Copy_of_Invoke static" >
+			<java:args ><![CDATA[#[arg0:vars.string]]]></java:args>
+		</java:invoke-static>
+		<logger level="INFO" doc:name="Copy_of_Logger" doc:id="bff4f043-7d02-4234-8836-62560cea9a0a" message="substring value is #[payload]" />
+	</flow>
+</mule>

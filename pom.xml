@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>helloworldcicd</artifactId>
+	<artifactId>helloworldcicdmulesy</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>helloworldcicd</name>
+	<name>helloworldcicdmulesy</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,7 +38,7 @@
 						<muleVersion>4.2.2</muleVersion>
 						<username>arpit_meh</username>
 						<password>Arpit@123</password>
-						<applicationName>helloworldcicd</applicationName>
+						<applicationName>helloworldcicdmulesy</applicationName>
 						<environment>Sandbox</environment>
 						<properties>
 							<key>value</key>

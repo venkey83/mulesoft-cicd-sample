@@ -40,6 +40,8 @@
 						<password>Arpit@123</password>
 						<applicationName>helloworldcicdmulesy</applicationName>
 						<environment>Sandbox</environment>
+						<workers>1</workers>
+						<workerType>MICRO</workerType>
 						<properties>
 							<key>value</key>
 						</properties>

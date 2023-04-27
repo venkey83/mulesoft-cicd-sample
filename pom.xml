@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.4.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>helloworldcicdmulesy</artifactId>
@@ -33,20 +33,30 @@
 				<version>3.3.5</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.2.2</muleVersion>
-						<username>arpit_meh</username>
-						<password>Arpit@123</password>
-						<applicationName>helloworldcicdmulesy</applicationName>
-						<environment>Sandbox</environment>
-						<workers>1</workers>
-						<workerType>MICRO</workerType>
-						<objectStoreV2>true</objectStoreV2>
-						<properties>
-							<key>value</key>
-						</properties>
-					</cloudHubDeployment>
+					  
+			<armDeployment>
+
+                                               <muleVersion>4.4.0</muleVersion>
+
+                                           <uri>https://anypoint.mulesoft.com</uri>
+
+                                                 <target>${project.target}</target>
+
+                                             <targetType>${project.targetType}</targetType>
+
+                                                  <username>${anypoint.username}</username>
+
+                                                 <password>${anypoint.password}</password>
+
+                                                      <environment>Sandbox</environment>
+
+                                                   <businessGroup>${project.businessGroup}</businessGroup>
+
+                                               <businessGroupId>${project.businessGroupId}</businessGroupId>
+
+                                             <applicationName>${project.name}</applicationName>
+
+                                      </armDeployment>
 				</configuration>
 				<executions>
                <execution>

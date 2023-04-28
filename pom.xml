@@ -33,20 +33,19 @@
 				<version>3.3.5</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>4.2.2</muleVersion>
-						<username>arpit_meh</username>
-						<password>Arpit@123</password>
-						<applicationName>helloworldcicdmulesy</applicationName>
-						<environment>Sandbox</environment>
-						<workers>1</workers>
-						<workerType>MICRO</workerType>
-						<objectStoreV2>true</objectStoreV2>
-						<properties>
-							<key>value</key>
-						</properties>
-					</cloudHubDeployment>
+			<armDeployment>
+                                       <uri>https://anypoint.mulesoft.com</uri>
+                                       <muleVersion>4.4.0</muleVersion>
+                          		   <target>test1</target>
+					    <username>Siva76</username>
+				              <password>V9553366987v@</password>
+                                              <targetType>server</targetType>
+                                        <server>my.anypoint.credentials</server>
+                                           <environment>Sandbox</environment>
+                                          <properties>
+                                         <key>value</key>
+                                        </properties>
+                              </armDeployment>
 				</configuration>
 				<executions>
                <execution>

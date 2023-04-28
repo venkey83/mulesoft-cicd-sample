@@ -40,7 +40,7 @@
 					    <username>Siva76</username>
 				              <password>V9553366987v@</password>
                                               <targetType>server</targetType>
-                                        <server>my.anypoint.credentials</server>
+                                        <server>test</server>
                                            <environment>Sandbox</environment>
                                           <properties>
                                          <key>value</key>

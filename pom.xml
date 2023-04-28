@@ -40,19 +40,19 @@
 
                                            <uri>https://anypoint.mulesoft.com</uri>
 
-                                                 <target>${project.target}</target>
+                                                 <target>test1</target>
 
-                                             <targetType>${project.targetType}</targetType>
+                                             <targetType>server</targetType>
 
-                                                  <username>${anypoint.username}</username>
+                                                  <username>Siva76</username>
 
-                                                 <password>${anypoint.password}</password>
+                                                <password>V9553366987v@</password>
 
                                                       <environment>Sandbox</environment>
 
-                                                   <businessGroup>${project.businessGroup}</businessGroup>
+                                                   <businessGroup>Logus Business Systems India Pvt .Ltd</businessGroup>
 
-                                               <businessGroupId>${project.businessGroupId}</businessGroupId>
+                                               <businessGroupId>Logus Business Systems India Pvt .Ltd</businessGroupId>
 
                                              <applicationName>${project.name}</applicationName>
 
